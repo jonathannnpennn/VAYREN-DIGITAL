@@ -15,11 +15,12 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div>
+    <div className="overflow-hidden">
+      {/* Hero */}
       <section className="relative min-h-screen overflow-hidden grid-noise pt-28">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_35%,#1c1c1c,transparent_28%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_25%,rgba(55,55,55,0.65),transparent_28%),radial-gradient(circle_at_10%_90%,rgba(30,30,30,0.5),transparent_35%)]" />
 
-        <div className="container relative flex min-h-[calc(100vh-7rem)] flex-col justify-center pb-20">
+        <div className="container relative flex min-h-[calc(100vh-7rem)] flex-col justify-center pb-20 pt-10 md:pb-24">
           <div className="eyebrow reveal">
             JASA PEMBUATAN WEBSITE & DIGITAL AGENCY
           </div>
@@ -30,7 +31,7 @@ export default function Home() {
             <span className="text-neutral-500">WEBSITE</span> UNTUK BISNIS.
           </h1>
 
-          <div className="mt-10 flex flex-col justify-between gap-8 md:flex-row md:items-end reveal delay2">
+          <div className="mt-10 flex flex-col justify-between gap-8 border-t border-white/10 pt-8 md:mt-12 md:flex-row md:items-end md:gap-12">
             <p className="max-w-xl text-base leading-7 muted">
               VAYREN DIGITAL menyediakan jasa pembuatan website company
               profile, landing page, e-commerce, digital marketing, dan solusi
@@ -38,12 +39,18 @@ export default function Home() {
               pelanggan, dan bertumbuh.
             </p>
 
-            <div className="flex flex-wrap gap-3">
-              <Link className="btn btn-solid" href="/contact">
+            <div className="flex flex-wrap gap-3 md:justify-end">
+              <Link
+                className="btn btn-solid transition duration-300 hover:-translate-y-0.5"
+                href="/contact"
+              >
                 KONSULTASI PROJECT <ArrowUpRight size={14} />
               </Link>
 
-              <Link className="btn" href="/portfolio">
+              <Link
+                className="btn transition duration-300 hover:-translate-y-0.5"
+                href="/portfolio"
+              >
                 LIHAT PORTFOLIO <ArrowDown size={14} />
               </Link>
             </div>
@@ -51,7 +58,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="overflow-hidden border-y border-[#242424] py-5">
+      {/* Marquee */}
+      <section className="overflow-hidden border-y border-[#242424] bg-[#080808] py-5">
         <div className="marquee">
           {Array.from({ length: 2 }).flatMap((_, i) =>
             [
@@ -65,7 +73,7 @@ export default function Home() {
             ].map((x) => (
               <span
                 key={`${i}-${x}`}
-                className="mx-7 whitespace-nowrap eyebrow"
+                className="mx-7 whitespace-nowrap eyebrow text-neutral-400"
               >
                 {x} /
               </span>
@@ -74,14 +82,17 @@ export default function Home() {
         </div>
       </section>
 
+      {/* About */}
       <section className="container py-28 md:py-40">
-        <div className="grid gap-12 md:grid-cols-2">
+        <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
           <div>
-            <div className="eyebrow">01 — TENTANG VAYREN DIGITAL</div>
+            <div className="sticky top-28">
+              <div className="eyebrow">01 — TENTANG VAYREN DIGITAL</div>
+            </div>
           </div>
 
           <div>
-            <h2 className="h2">
+            <h2 className="h2 max-w-4xl">
               KAMI BUKAN HANYA MEMBUAT WEBSITE. KAMI MEMBANGUN SISTEM DIGITAL
               UNTUK BISNIS.
             </h2>
@@ -94,7 +105,7 @@ export default function Home() {
               efektif.
             </p>
 
-            <div className="mt-10 grid grid-cols-2 gap-3">
+            <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
               {[
                 "Branding",
                 "Jasa Pembuatan Website",
@@ -104,12 +115,15 @@ export default function Home() {
                 "Conversion",
                 "AI Automation",
                 "E-Commerce",
-              ].map((x) => (
+              ].map((x, i) => (
                 <div
-                  className="border border-[#242424] p-4 text-sm"
+                  className="group border border-[#242424] bg-[#0a0a0a] p-4 text-sm transition duration-300 hover:-translate-y-1 hover:border-neutral-500 hover:bg-[#121212]"
                   key={x}
                 >
-                  {x}
+                  <span className="mb-6 block text-[10px] tracking-[0.18em] text-neutral-600">
+                    0{i + 1}
+                  </span>
+                  <span className="block leading-5">{x}</span>
                 </div>
               ))}
             </div>
@@ -117,8 +131,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Portfolio */}
       <section className="container pb-28 md:pb-40">
-        <div className="flex items-end justify-between gap-6">
+        <div className="flex flex-col justify-between gap-8 border-b border-[#242424] pb-10 sm:flex-row sm:items-end">
           <div>
             <div className="eyebrow">02 — PORTFOLIO WEBSITE</div>
 
@@ -129,7 +144,10 @@ export default function Home() {
             </h2>
           </div>
 
-          <Link className="btn hidden md:inline-flex" href="/portfolio">
+          <Link
+            className="btn hidden transition duration-300 hover:-translate-y-0.5 md:inline-flex"
+            href="/portfolio"
+          >
             LIHAT SEMUA PORTFOLIO <ArrowUpRight size={14} />
           </Link>
         </div>
@@ -139,9 +157,17 @@ export default function Home() {
             <ProjectCard key={p.slug} p={p} />
           ))}
         </div>
+
+        <Link
+          className="btn mt-8 w-full justify-center transition duration-300 hover:-translate-y-0.5 md:hidden"
+          href="/portfolio"
+        >
+          LIHAT SEMUA PORTFOLIO <ArrowUpRight size={14} />
+        </Link>
       </section>
 
-      <section className="border-y border-[#242424] py-28">
+      {/* Services */}
+      <section className="border-y border-[#242424] bg-[#060606] py-28 md:py-36">
         <div className="container">
           <div className="eyebrow">03 — LAYANAN DIGITAL</div>
 
@@ -150,7 +176,7 @@ export default function Home() {
             YANG MEMBANTU BISNIS BERTUMBUH.
           </h2>
 
-          <div className="mt-14 grid gap-px bg-[#242424] md:grid-cols-3">
+          <div className="mt-14 grid overflow-hidden border border-[#242424] bg-[#242424] sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
                 title: "JASA PEMBUATAN WEBSITE",
@@ -186,36 +212,54 @@ export default function Home() {
               <Link
                 href="/services"
                 key={service.title}
-                className="bg-black p-7 hover:bg-[#101010]"
+                className="group relative min-h-[280px] bg-black p-7 transition duration-300 hover:z-10 hover:bg-[#111111] sm:p-8"
               >
-                <span className="eyebrow">0{i + 1}</span>
+                <span className="eyebrow text-neutral-600">0{i + 1}</span>
 
-                <h3 className="mt-10 text-xl">{service.title}</h3>
+                <ArrowUpRight
+                  size={18}
+                  className="absolute right-7 top-7 text-neutral-600 transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-white"
+                />
 
-                <p className="mt-3 text-sm muted">{service.description}</p>
+                <h3 className="mt-16 max-w-[16rem] text-xl leading-tight tracking-tight sm:text-2xl">
+                  {service.title}
+                </h3>
+
+                <p className="mt-4 max-w-xs text-sm leading-6 muted">
+                  {service.description}
+                </p>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
+      {/* CTA */}
       <section className="container py-28 md:py-40">
-        <div className="panel p-8 md:p-16">
-          <div className="eyebrow">04 — KONSULTASI WEBSITE</div>
+        <div className="panel relative overflow-hidden p-8 md:p-16">
+          <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-white/[0.05] blur-3xl" />
 
-          <h2 className="h2 mt-6 max-w-5xl">
-            SIAP MEMBUAT WEBSITE DAN MEMBANGUN PERTUMBUHAN DIGITAL BISNIS ANDA?
-          </h2>
+          <div className="relative">
+            <div className="eyebrow">04 — KONSULTASI WEBSITE</div>
 
-          <p className="mt-7 max-w-xl muted">
-            Ceritakan bisnis dan tujuan Anda. VAYREN DIGITAL siap membantu
-            merancang website, digital marketing, atau solusi AI yang sesuai
-            kebutuhan bisnis Anda.
-          </p>
+            <h2 className="h2 mt-6 max-w-5xl">
+              SIAP MEMBUAT WEBSITE DAN MEMBANGUN PERTUMBUHAN DIGITAL BISNIS
+              ANDA?
+            </h2>
 
-          <Link className="btn btn-solid mt-9" href="/contact">
-            MULAI KONSULTASI <ArrowUpRight size={14} />
-          </Link>
+            <p className="mt-7 max-w-xl leading-7 muted">
+              Ceritakan bisnis dan tujuan Anda. VAYREN DIGITAL siap membantu
+              merancang website, digital marketing, atau solusi AI yang sesuai
+              kebutuhan bisnis Anda.
+            </p>
+
+            <Link
+              className="btn btn-solid mt-9 transition duration-300 hover:-translate-y-0.5"
+              href="/contact"
+            >
+              MULAI KONSULTASI <ArrowUpRight size={14} />
+            </Link>
+          </div>
         </div>
       </section>
     </div>
