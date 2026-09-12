@@ -4,9 +4,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "VAYREN DIGITAL — AI-Powered Digital Agency",
+  title: "Jasa Pembuatan Website & Digital Marketing | VAYREN DIGITAL",
   description:
-    "We build websites, AI-powered creative experiences and digital marketing systems that help businesses grow.",
+    "VAYREN DIGITAL menyediakan jasa pembuatan website company profile, landing page, digital marketing, dan solusi AI untuk membantu bisnis berkembang.",
 
   metadataBase: new URL("https://vayren-digital.pages.dev"),
 
@@ -19,17 +19,18 @@ export const metadata: Metadata = {
     follow: true,
   },
 
-  openGraph: {
-    title: "VAYREN DIGITAL — AI-Powered Digital Agency",
-    description:
-      "We build websites, AI-powered creative experiences and digital marketing systems that help businesses grow.",
-    url: "https://vayren-digital.pages.dev",
-    siteName: "VAYREN DIGITAL",
-    type: "website",
-  },
-
   alternates: {
     canonical: "/",
+  },
+
+  openGraph: {
+    title: "Jasa Pembuatan Website & Digital Marketing | VAYREN DIGITAL",
+    description:
+      "VAYREN DIGITAL menyediakan jasa pembuatan website, landing page, digital marketing, dan solusi AI untuk bisnis.",
+    url: "https://vayren-digital.pages.dev/",
+    siteName: "VAYREN DIGITAL",
+    type: "website",
+    locale: "id_ID",
   },
 };
 
@@ -39,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="id">
       <body>
         <Navbar />
         <main>{children}</main>
